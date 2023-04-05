@@ -2,14 +2,19 @@
 import { Box, Flex, Heading, Text } from '@chakra-ui/react';
 import React from 'react';
 import ButtonComp from './ButtonComp';
+import { useTodo } from '@/context/TodoContext';
+import { TodoActionKind } from '@/types/@types.todo';
 
 export default function BoxComp({
   title,
   details,
+  id,
 }: {
   title: string;
   details: string;
+  id: number;
 }) {
+  const { dispatch } = useTodo();
   return (
     <>
       <Box
@@ -27,7 +32,14 @@ export default function BoxComp({
             </Heading>
             <Text color="white">{details}</Text>
           </Box>
-          <ButtonComp content="X" size={'1px'} />
+          <div
+            onClick={dispatch({
+              type: TodoActionKind.DELETE_TODO,
+              payload: { id: id },
+            })}
+          >
+            <ButtonComp content="X" size={'1px'} />
+          </div>
         </Flex>
       </Box>
     </>

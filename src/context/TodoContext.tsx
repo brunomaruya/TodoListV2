@@ -14,6 +14,7 @@ const initContext = {
   setDetails: () => {},
   details: '',
   todos: [],
+  dispatch: () => {},
 };
 
 export const TodoContext = createContext<TodoContextType>(initContext);
@@ -59,6 +60,7 @@ export function TodoProvider({ children }: { children: React.ReactNode }) {
     setDetails,
     details,
     todos,
+    dispatch,
   };
 
   return <TodoContext.Provider value={values}>{children}</TodoContext.Provider>;

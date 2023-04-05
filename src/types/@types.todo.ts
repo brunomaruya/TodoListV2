@@ -22,4 +22,5 @@ export type TodoContextType = {
   details: string;
   setDetails: Function;
   todos: TodoState[];
+  dispatch: any;
 };
