@@ -26,7 +26,8 @@ function reducer(todos: TodoState | any, action: TodoAction): TodoState | any {
   switch (action.type) {
     case TodoActionKind.ADD_TODO:
       return [...todos, newTodo(action.payload.title, action.payload.details)];
-
+    case TodoActionKind.DELETE_TODO:
+      return todos.filter((todo) => todo.id !== action.payload.id);
     default:
       return todos;
   }
