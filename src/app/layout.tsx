@@ -3,6 +3,7 @@
 
 import { ChakraProvider } from '@chakra-ui/react';
 import './global.css';
+import { TodoProvider } from '@/context/TodoContext';
 
 export default function RootLayout({
   children,
@@ -13,7 +14,9 @@ export default function RootLayout({
     <html lang="en">
       <head />
       <body style={{ background: '#1b1a17' }}>
-        <ChakraProvider>{children}</ChakraProvider>
+        <TodoProvider>
+          <ChakraProvider>{children}</ChakraProvider>
+        </TodoProvider>
       </body>
     </html>
   );

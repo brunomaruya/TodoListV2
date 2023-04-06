@@ -8,15 +8,13 @@ import { Box, Container, Heading } from '@chakra-ui/react';
 export default function Home() {
   return (
     <>
-      <TodoProvider>
-        <Container>
-          <Box mb="10px">
-            <Header />
-          </Box>
+      <Container>
+        <Box mb="10px">
+          <Header />
+        </Box>
 
-          <ToDoList />
-        </Container>
-      </TodoProvider>
+        <ToDoList />
+      </Container>
     </>
   );
 }

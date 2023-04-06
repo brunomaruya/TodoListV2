@@ -14,6 +14,7 @@ const initContext = {
   setDetails: () => {},
   details: '',
   todos: [],
+  dispatch: () => {},
 };
 
 export const TodoContext = createContext<TodoContextType>(initContext);
@@ -22,12 +23,13 @@ export function useTodo() {
   return useContext(TodoContext);
 }
 
-function reducer(todos: TodoState | any, action: TodoAction): TodoState | any {
+function reducer(todos: TodoState[], action: TodoAction): TodoState[] {
   switch (action.type) {
     case TodoActionKind.ADD_TODO:
       return [...todos, newTodo(action.payload.title, action.payload.details)];
     case TodoActionKind.DELETE_TODO:
-      return todos.filter((todo) => todo.id !== action.payload.id);
+      console.log('delete');
+      return todos;
     default:
       return todos;
   }
@@ -59,6 +61,7 @@ export function TodoProvider({ children }: { children: React.ReactNode }) {
     setDetails,
     details,
     todos,
+    dispatch,
   };
 
   return <TodoContext.Provider value={values}>{children}</TodoContext.Provider>;

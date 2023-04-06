@@ -5,13 +5,13 @@ import React from 'react';
 
 export default function ToDoList() {
   const { todos } = useTodo();
-  console.log(todos);
+
   return (
     <div>
       {todos
         ? todos.map((todo) => (
             <div key={todo.id}>
-              <BoxComp title={todo.title} details={todo.details} />
+              <BoxComp title={todo.title} details={todo.details} id={todo.id} />
             </div>
           ))
         : ''}
