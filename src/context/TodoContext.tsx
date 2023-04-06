@@ -15,6 +15,7 @@ const initContext = {
   details: '',
   todos: [],
   dispatch: () => {},
+  deleteTodo: (id: number) => {},
 };
 
 export const TodoContext = createContext<TodoContextType>(initContext);
@@ -28,8 +29,7 @@ function reducer(todos: TodoState[], action: TodoAction): TodoState[] {
     case TodoActionKind.ADD_TODO:
       return [...todos, newTodo(action.payload.title, action.payload.details)];
     case TodoActionKind.DELETE_TODO:
-      console.log('delete');
-      return todos;
+      return todos.filter((todo) => todo.id !== action.payload.id);
     default:
       return todos;
   }
@@ -54,6 +54,10 @@ export function TodoProvider({ children }: { children: React.ReactNode }) {
     setDetails('');
   }
 
+  const deleteTodo = (id: number) => {
+    dispatch({ type: TodoActionKind.DELETE_TODO, payload: { id: id } });
+  };
+
   const values: TodoContextType = {
     handleSubmit,
     setTitle,
@@ -62,6 +66,7 @@ export function TodoProvider({ children }: { children: React.ReactNode }) {
     details,
     todos,
     dispatch,
+    deleteTodo,
   };
 
   return <TodoContext.Provider value={values}>{children}</TodoContext.Provider>;

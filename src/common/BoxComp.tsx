@@ -1,6 +1,6 @@
 'use client';
-import { Box, Flex, Heading, Text } from '@chakra-ui/react';
-import React from 'react';
+import { Box, Flex, Heading, Text, useStatStyles } from '@chakra-ui/react';
+import React, { useEffect } from 'react';
 import ButtonComp from './ButtonComp';
 import { useTodo } from '@/context/TodoContext';
 import { TodoActionKind } from '@/types/@types.todo';
@@ -14,7 +14,10 @@ export default function BoxComp({
   details: string;
   id: number;
 }) {
-  const { dispatch } = useTodo();
+  const { deleteTodo } = useTodo();
+
+  useEffect(() => {});
+
   return (
     <>
       <Box
@@ -32,12 +35,7 @@ export default function BoxComp({
             </Heading>
             <Text color="white">{details}</Text>
           </Box>
-          <div
-            onClick={dispatch({
-              type: TodoActionKind.DELETE_TODO,
-              payload: id,
-            })}
-          >
+          <div onClick={() => deleteTodo(id)}>
             <ButtonComp content="X" size={'1px'} />
           </div>
         </Flex>

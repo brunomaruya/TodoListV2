@@ -1,7 +1,7 @@
 import BoxComp from '@/common/BoxComp';
 import { TodoContext, useTodo } from '@/context/TodoContext';
-import { TodoContextType } from '@/types/@types.todo';
-import React from 'react';
+import { TodoContextType, TodoState } from '@/types/@types.todo';
+import React, { useCallback, useEffect, useState } from 'react';
 
 export default function ToDoList() {
   const { todos } = useTodo();
