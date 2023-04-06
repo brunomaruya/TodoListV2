@@ -9,7 +9,12 @@ export default function ToDoList() {
       {todos
         ? todos.map((todo) => (
             <div key={todo.id}>
-              <BoxComp title={todo.title} details={todo.details} id={todo.id} />
+              <BoxComp
+                title={todo.title}
+                details={todo.details}
+                id={todo.id}
+                complete={todo.complete}
+              />
             </div>
           ))
         : ''}

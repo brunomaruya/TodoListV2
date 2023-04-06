@@ -1,6 +1,7 @@
 export enum TodoActionKind {
   ADD_TODO = 'add-todo',
   DELETE_TODO = 'delete-todo',
+  CHECK_TODO = 'check-todo',
 }
 
 export interface TodoState {

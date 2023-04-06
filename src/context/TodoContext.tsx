@@ -29,6 +29,12 @@ function reducer(todos: TodoState[], action: TodoAction): TodoState[] {
       return [...todos, newTodo(action.payload.title, action.payload.details)];
     case TodoActionKind.DELETE_TODO:
       return todos.filter((todo) => todo.id !== action.payload.id);
+    case TodoActionKind.CHECK_TODO:
+      return todos.map((todo) =>
+        todo.id === action.payload.id
+          ? { ...todo, complete: !todo.complete }
+          : todo
+      );
     default:
       return todos;
   }
