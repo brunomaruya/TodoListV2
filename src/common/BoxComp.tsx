@@ -16,8 +16,6 @@ export default function BoxComp({
 }) {
   const { dispatch } = useTodo();
 
-  useEffect(() => {});
-
   return (
     <>
       <Box

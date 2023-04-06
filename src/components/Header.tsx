@@ -25,6 +25,7 @@ export default function Header() {
                 focusBorderColor="orange.300"
                 onChange={(e) => setTitle(e.target.value)}
                 value={title}
+                required
               />
               <Input
                 placeholder="About..."
