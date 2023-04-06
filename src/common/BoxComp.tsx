@@ -14,7 +14,7 @@ export default function BoxComp({
   details: string;
   id: number;
 }) {
-  const { deleteTodo } = useTodo();
+  const { dispatch } = useTodo();
 
   useEffect(() => {});
 
@@ -35,7 +35,14 @@ export default function BoxComp({
             </Heading>
             <Text color="white">{details}</Text>
           </Box>
-          <div onClick={() => deleteTodo(id)}>
+          <div
+            onClick={() =>
+              dispatch({
+                type: TodoActionKind.DELETE_TODO,
+                payload: { id: id },
+              })
+            }
+          >
             <ButtonComp content="X" size={'1px'} />
           </div>
         </Flex>

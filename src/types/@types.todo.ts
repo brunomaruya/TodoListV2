@@ -23,5 +23,4 @@ export type TodoContextType = {
   setDetails: Function;
   todos: TodoState[];
   dispatch: any;
-  deleteTodo: Function;
 };

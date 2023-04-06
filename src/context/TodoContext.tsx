@@ -15,7 +15,6 @@ const initContext = {
   details: '',
   todos: [],
   dispatch: () => {},
-  deleteTodo: (id: number) => {},
 };
 
 export const TodoContext = createContext<TodoContextType>(initContext);
@@ -54,10 +53,6 @@ export function TodoProvider({ children }: { children: React.ReactNode }) {
     setDetails('');
   }
 
-  const deleteTodo = (id: number) => {
-    dispatch({ type: TodoActionKind.DELETE_TODO, payload: { id: id } });
-  };
-
   const values: TodoContextType = {
     handleSubmit,
     setTitle,
@@ -66,7 +61,6 @@ export function TodoProvider({ children }: { children: React.ReactNode }) {
     details,
     todos,
     dispatch,
-    deleteTodo,
   };
 
   return <TodoContext.Provider value={values}>{children}</TodoContext.Provider>;
